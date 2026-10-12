@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SASKI Receipt Anatomy</title>
+<style>
+  :root {
+    --bg: #f6f5f1;
+    --paper: #ffffff;
+    --ink: #1c1d21;
+    --muted: #63666e;
+    --line: #e3e1da;
+    --accent: #1f5f8b;
+    --accent-soft: #e6eff6;
+    --deny: #a8322d;
+    --deny-soft: #f8e7e5;
+    --ok: #2f6b3d;
+    --ok-soft: #e5f1e7;
+    --code-bg: #f2f1ec;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #131417; --paper: #1b1d21; --ink: #ecebe6; --muted: #9a9ca3; --line: #2e3036;
+      --accent: #7fb6dc; --accent-soft: #1d2b36; --deny: #f08a83; --deny-soft: #3a2220;
+      --ok: #86c995; --ok-soft: #1f3124; --code-bg: #16181b;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #131417; --paper: #1b1d21; --ink: #ecebe6; --muted: #9a9ca3; --line: #2e3036;
+    --accent: #7fb6dc; --accent-soft: #1d2b36; --deny: #f08a83; --deny-soft: #3a2220;
+    --ok: #86c995; --ok-soft: #1f3124; --code-bg: #16181b;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.5; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 1.75rem; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .lede { color: var(--muted); margin: 0 0 28px; max-width: 60ch; }
+  .tag { display: inline-block; font-size: .72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+         color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 2px 10px; margin-bottom: 14px; }
+
+  .receipt { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; position: relative;
+             box-shadow: 0 1px 0 rgba(0,0,0,.03), 0 8px 24px rgba(0,0,0,.05); }
+  .receipt::before, .receipt::after { content: ""; position: absolute; left: 0; right: 0; height: 10px;
+             background: radial-gradient(circle at 6px -2px, var(--bg) 6px, transparent 6.5px) repeat-x; background-size: 12px 10px; }
+  .receipt::before { top: -1px; }
+  .receipt::after { bottom: -1px; transform: rotate(180deg); }
+  .rhead { padding: 22px 22px 14px; border-bottom: 1px dashed var(--line); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .rhead .brand { font-weight: 700; letter-spacing: .02em; }
+  .rhead .meta { font-family: var(--mono); font-size: .8rem; color: var(--muted); text-align: right; }
+
+  .sec { padding: 16px 22px; border-bottom: 1px dashed var(--line); display: grid; grid-template-columns: 30px 1fr; gap: 0 12px; }
+  .sec:last-of-type { border-bottom: none; }
+  .num { width: 24px; height: 24px; border-radius: 50%; background: var(--accent-soft); color: var(--accent);
+         font-size: .78rem; font-weight: 700; display: grid; place-items: center; margin-top: 1px; }
+  .sec h2 { font-size: .98rem; margin: 0; }
+  .sec p { margin: 2px 0 10px; color: var(--muted); font-size: .9rem; }
+  .fields { grid-column: 2; font-family: var(--mono); font-size: .8rem; display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; }
+  .k { color: var(--muted); }
+  .v { overflow-wrap: anywhere; }
+  .pill { display: inline-block; padding: 0 8px; border-radius: 4px; font-weight: 700; }
+  .deny { background: var(--deny-soft); color: var(--deny); }
+  .ok { background: var(--ok-soft); color: var(--ok); }
+
+  .tamper { margin-top: 28px; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 18px 22px; }
+  .tamper h3 { margin: 0 0 10px; font-size: 1rem; }
+  .trow { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: .82rem; margin: 6px 0; }
+  .arrow { color: var(--muted); }
+
+  .verify { margin-top: 28px; }
+  .verify h3 { margin: 0 0 6px; font-size: 1rem; }
+  .verify p { margin: 0 0 10px; color: var(--muted); font-size: .9rem; }
+  pre { background: var(--code-bg); border: 1px solid var(--line); border-radius: 6px; padding: 14px 16px; overflow-x: auto;
+        font-family: var(--mono); font-size: .78rem; line-height: 1.55; margin: 0; }
+  details { margin-top: 16px; }
+  summary { cursor: pointer; font-weight: 600; font-size: .92rem; }
+  details pre { margin-top: 10px; }
+  .foot { margin-top: 24px; font-size: .8rem; color: var(--muted); }
+  @media (max-width: 520px) {
+    .fields { grid-template-columns: 1fr; gap: 0; }
+    .fields .k { margin-top: 6px; }
+    .rhead .meta { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="tag">Example receipt · test key · sanitized data</span>
+  <h1>Anatomy of a SASKI receipt</h1>
+  <p class="lede">Every decision SASKI makes produces a signed receipt like this one. It records who acted, what was attempted, which rules applied, and what SASKI decided, without storing any private content.</p>
+
+  <div class="receipt">
+    <div class="rhead">
+      <div class="brand">SASKI Agentic · decision receipt</div>
+      <div class="meta">receipt_version 1.3<br>2026-01-15 00:00:00 UTC</div>
+    </div>
+
+    <div class="sec">
+      <div class="num">1</div>
+      <div><h2>Who acted</h2><p>The agent, session, and workflow this decision belongs to.</p></div>
+      <div class="fields">
+        <span class="k">agent_id</span><span class="v">agent-vector</span>
+        <span class="k">session_id</span><span class="v">session-vector</span>
+        <span class="k">workflow_id</span><span class="v">wf-vector</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="num">2</div>
+      <div><h2>What it tried to do</h2><p>The tool requested. Its arguments are kept only as a fingerprint, never as plain text.</p></div>
+      <div class="fields">
+        <span class="k">tool_name</span><span class="v">example__noop</span>
+        <span class="k">parameters_digest</span><span class="v">85415bab93be16f1…b1860cbae</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="num">3</div>
+      <div><h2>Which rules applied</h2><p>The policy version and a fingerprint of the exact rulebook in force at that moment.</p></div>
+      <div class="fields">
+        <span class="k">policy_version</span><span class="v">vector-policy-1</span>
+        <span class="k">rulebook_digest</span><span class="v">cdcdcdcdcdcdcdcd…cdcdcdcdcd</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="num">4</div>
+      <div><h2>The decision</h2><p>Allow, deny, or hold for a human, with a reason code an auditor can look up.</p></div>
+      <div class="fields">
+        <span class="k">verdict</span><span class="v"><span class="pill deny">deny</span></span>
+        <span class="k">reason_codes</span><span class="v">VECTOR_DENY</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="num">5</div>
+      <div><h2>Which software decided</h2><p>A fingerprint of the exact gateway build, plus the instance that ran it.</p></div>
+      <div class="fields">
+        <span class="k">gateway_code_digest</span><span class="v">ffffffffffffffff…fffffff</span>
+        <span class="k">gateway_instance_id</span><span class="v">gateway-instance-vector</span>
+        <span class="k">product_version</span><span class="v">1.7.2</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="num">6</div>
+      <div><h2>When</h2><p>A timestamp to the nanosecond, bound to a five minute time window.</p></div>
+      <div class="fields">
+        <span class="k">timestamp</span><span class="v">2026-01-15T00:00:00+00:00</span>
+        <span class="k">timestamp_ns</span><span class="v">1768435200000000000</span>
+        <span class="k">time_window_id</span><span class="v">5894784 (300 seconds)</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="num">7</div>
+      <div><h2>Its place in the chain</h2><p>Each receipt points to the one before it. Removing or reordering a receipt breaks the chain.</p></div>
+      <div class="fields">
+        <span class="k">receipt_id</span><span class="v">receipt-vector-1</span>
+        <span class="k">hop_index</span><span class="v">0</span>
+        <span class="k">prev_receipt_id</span><span class="v">(first in this workflow)</span>
+      </div>
+    </div>
+
+    <div class="sec">
+      <div class="num">8</div>
+      <div><h2>The signature</h2><p>An Ed25519 signature over every field above. Change one character and verification fails.</p></div>
+      <div class="fields">
+        <span class="k">alg</span><span class="v">Ed25519</span>
+        <span class="k">kid</span><span class="v">vector-1</span>
+        <span class="k">signature</span><span class="v">pFOl1Fa11zVGQcZm…bEvBA==</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tamper">
+    <h3>What happens if someone edits it</h3>
+    <div class="trow"><span>verdict: <span class="pill deny">deny</span></span><span class="arrow">→</span><span>signature</span><span class="pill ok">valid</span></div>
+    <div class="trow"><span>verdict: <span class="pill ok">allow</span></span><span class="arrow">→</span><span>signature</span><span class="pill deny">invalid</span></div>
+  </div>
+
+  <div class="verify">
+    <h3>Verify it yourself</h3>
+    <p>No SASKI account or software needed. Save the receipt below as <code>receipt-sample.json</code> and run this with Python and the <code>cryptography</code> package.</p>
+<pre>import json, base64
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+
+# TEST ONLY public key published with the sample receipt
+PUBLIC_KEY = "uAKiced9sck1tT/LJ82Vw9ouImOqVNYHYn1+STp6MzM="
+
+receipt = json.load(open("receipt-sample.json"))
+signature = base64.b64decode(receipt.pop("signature"))
+canonical = json.dumps(receipt, sort_keys=True, separators=(",", ":"),
+                       ensure_ascii=False).encode("utf-8")
+
+key = Ed25519PublicKey.from_public_bytes(base64.b64decode(PUBLIC_KEY))
+key.verify(signature, canonical)  # raises InvalidSignature if anything changed
+print("valid")</pre>
+
+    <details>
+      <summary>Full receipt (JSON)</summary>
+<pre>{
+  "agent_id": "agent-vector",
+  "alg": "Ed25519",
+  "commitment_key_id": "bc6b8486eec43af36dc0b8e4f70b743f",
+  "commitment_mode": "hkdf",
+  "config_provenance": {
+    "gate": "vector",
+    "source": "test-only"
+  },
+  "emitted_profiles": [
+    "saski-native@1"
+  ],
+  "encoder_id": "2bde471589d3c6c18d625ea56f2d436568f871de01334b3050f55014674adce6",
+  "gateway_code_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "gateway_instance_id": "gateway-instance-vector",
+  "hold_id": "",
+  "hop_index": 0,
+  "human_decision": null,
+  "kid": "vector-1",
+  "origin_event_id": "",
+  "parameters_digest": "85415bab93be16f131b0e9d6ba8543596694641b8fcff8773f2e4f7b1860cbae",
+  "policy_version": "vector-policy-1",
+  "prev_receipt_id": "",
+  "product": "agentic",
+  "product_version": "1.7.2",
+  "reason_codes": [
+    "VECTOR_DENY"
+  ],
+  "receipt_id": "receipt-vector-1",
+  "receipt_version": "1.3",
+  "record_flags": [
+    "contemporaneous"
+  ],
+  "record_type": "decision",
+  "resource": "",
+  "rulebook_digest": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+  "session_id": "session-vector",
+  "signature": "pFOl1Fa11zVGQcZmfKjho73PmTb3PdNewF8XZf5dpTixe+Cwbue4BV1UHmXEKIHyA4jiIDx2qojMaOpj1bEvBA==",
+  "time_window_id": 5894784,
+  "time_window_seconds": 300,
+  "timestamp": "2026-01-15T00:00:00+00:00",
+  "timestamp_ns": 1768435200000000000,
+  "tool_name": "example__noop",
+  "verdict": "deny",
+  "workflow_id": "wf-vector"
+}
+</pre>
+    </details>
+  </div>
+
+  <p class="foot">This sample was produced by SASKI Agentic with a published test key and sanitized values. Test keys are for verification practice only and are never used in production.</p>
+</div>
+</body>
+</html>

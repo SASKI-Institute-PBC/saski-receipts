@@ -1,0 +1,136 @@
+{
+  "chain_key": "wf-vector",
+  "commitment_mode": "hkdf",
+  "expected_verify_chain": "pass",
+  "label": "TEST ONLY",
+  "pinned_clock": {
+    "gateway_code_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "note": "TEST ONLY pinned clock and pinned code digests. The digests are fixed stand-ins, not a hash of a program. Regenerating these files is byte-identical.",
+    "sdk_code_digest": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "timestamp_ns": 1768435200000000000,
+    "timestamp_utc": "2026-01-15T00:00:00+00:00"
+  },
+  "receipts": [
+    {
+      "canonical_hex": "7b226167656e745f6964223a226167656e742d766563746f72222c22616c67223a2245643235353139222c22636f6d6d69746d656e745f6b65795f6964223a226263366238343836656563343361663336646330623865346637306237343366222c22636f6d6d69746d656e745f6d6f6465223a22686b6466222c22636f6e6669675f70726f76656e616e6365223a7b2267617465223a22766563746f72222c22736f75726365223a22746573742d6f6e6c79227d2c22656d69747465645f70726f66696c6573223a5b227361736b692d6e61746976654031225d2c22656e636f6465725f6964223a2232626465343731353839643363366331386436323565613536663264343336353638663837316465303133333462333035306635353031343637346164636536222c22676174657761795f636f64655f646967657374223a2266666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666222c22676174657761795f696e7374616e63655f6964223a22676174657761792d696e7374616e63652d766563746f72222c22686f6c645f6964223a22222c22686f705f696e646578223a302c2268756d616e5f6465636973696f6e223a6e756c6c2c226b6964223a22766563746f722d31222c226f726967696e5f6576656e745f6964223a22222c22706172616d65746572735f646967657374223a2238353431356261623933626531366631333162306539643662613835343335393636393436343162386663666638373733663265346637623138363063626165222c22706f6c6963795f76657273696f6e223a22766563746f722d706f6c6963792d31222c22707265765f726563656970745f6964223a22222c2270726f64756374223a226167656e746963222c2270726f647563745f76657273696f6e223a22312e372e32222c22726561736f6e5f636f646573223a5b22564543544f525f44454e59225d2c22726563656970745f6964223a22726563656970742d766563746f722d31222c22726563656970745f76657273696f6e223a22312e33222c227265636f72645f666c616773223a5b22636f6e74656d706f72616e656f7573225d2c227265636f72645f74797065223a226465636973696f6e222c227265736f75726365223a22222c2272756c65626f6f6b5f646967657374223a2263646364636463646364636463646364636463646364636463646364636463646364636463646364636463646364636463646364636463646364636463646364222c2273657373696f6e5f6964223a2273657373696f6e2d766563746f72222c2274696d655f77696e646f775f6964223a353839343738342c2274696d655f77696e646f775f7365636f6e6473223a3330302c2274696d657374616d70223a22323032362d30312d31355430303a30303a30302b30303a3030222c2274696d657374616d705f6e73223a313736383433353230303030303030303030302c22746f6f6c5f6e616d65223a226578616d706c655f5f6e6f6f70222c2276657264696374223a2264656e79222c22776f726b666c6f775f6964223a2277662d766563746f72227d",
+      "canonical_utf8": "{\"agent_id\":\"agent-vector\",\"alg\":\"Ed25519\",\"commitment_key_id\":\"bc6b8486eec43af36dc0b8e4f70b743f\",\"commitment_mode\":\"hkdf\",\"config_provenance\":{\"gate\":\"vector\",\"source\":\"test-only\"},\"emitted_profiles\":[\"saski-native@1\"],\"encoder_id\":\"2bde471589d3c6c18d625ea56f2d436568f871de01334b3050f55014674adce6\",\"gateway_code_digest\":\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"gateway_instance_id\":\"gateway-instance-vector\",\"hold_id\":\"\",\"hop_index\":0,\"human_decision\":null,\"kid\":\"vector-1\",\"origin_event_id\":\"\",\"parameters_digest\":\"85415bab93be16f131b0e9d6ba8543596694641b8fcff8773f2e4f7b1860cbae\",\"policy_version\":\"vector-policy-1\",\"prev_receipt_id\":\"\",\"product\":\"agentic\",\"product_version\":\"1.7.2\",\"reason_codes\":[\"VECTOR_DENY\"],\"receipt_id\":\"receipt-vector-1\",\"receipt_version\":\"1.3\",\"record_flags\":[\"contemporaneous\"],\"record_type\":\"decision\",\"resource\":\"\",\"rulebook_digest\":\"cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd\",\"session_id\":\"session-vector\",\"time_window_id\":5894784,\"time_window_seconds\":300,\"timestamp\":\"2026-01-15T00:00:00+00:00\",\"timestamp_ns\":1768435200000000000,\"tool_name\":\"example__noop\",\"verdict\":\"deny\",\"workflow_id\":\"wf-vector\"}",
+      "ed25519_public_key_b64": "uAKiced9sck1tT/LJ82Vw9ouImOqVNYHYn1+STp6MzM=",
+      "expected_result": "valid",
+      "receipt": {
+        "agent_id": "agent-vector",
+        "alg": "Ed25519",
+        "commitment_key_id": "bc6b8486eec43af36dc0b8e4f70b743f",
+        "commitment_mode": "hkdf",
+        "config_provenance": {
+          "gate": "vector",
+          "source": "test-only"
+        },
+        "emitted_profiles": [
+          "saski-native@1"
+        ],
+        "encoder_id": "2bde471589d3c6c18d625ea56f2d436568f871de01334b3050f55014674adce6",
+        "gateway_code_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "gateway_instance_id": "gateway-instance-vector",
+        "hold_id": "",
+        "hop_index": 0,
+        "human_decision": null,
+        "kid": "vector-1",
+        "origin_event_id": "",
+        "parameters_digest": "85415bab93be16f131b0e9d6ba8543596694641b8fcff8773f2e4f7b1860cbae",
+        "policy_version": "vector-policy-1",
+        "prev_receipt_id": "",
+        "product": "agentic",
+        "product_version": "1.7.2",
+        "reason_codes": [
+          "VECTOR_DENY"
+        ],
+        "receipt_id": "receipt-vector-1",
+        "receipt_version": "1.3",
+        "record_flags": [
+          "contemporaneous"
+        ],
+        "record_type": "decision",
+        "resource": "",
+        "rulebook_digest": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+        "session_id": "session-vector",
+        "signature": "pFOl1Fa11zVGQcZmfKjho73PmTb3PdNewF8XZf5dpTixe+Cwbue4BV1UHmXEKIHyA4jiIDx2qojMaOpj1bEvBA==",
+        "time_window_id": 5894784,
+        "time_window_seconds": 300,
+        "timestamp": "2026-01-15T00:00:00+00:00",
+        "timestamp_ns": 1768435200000000000,
+        "tool_name": "example__noop",
+        "verdict": "deny",
+        "workflow_id": "wf-vector"
+      },
+      "sha256": "d5d82ae4d9ad9a316b2db519ae862021125dd1a605cda9b459c74cf4945cd2eb",
+      "signature": "pFOl1Fa11zVGQcZmfKjho73PmTb3PdNewF8XZf5dpTixe+Cwbue4BV1UHmXEKIHyA4jiIDx2qojMaOpj1bEvBA=="
+    },
+    {
+      "canonical_hex": "7b226167656e745f6964223a226167656e742d766563746f72222c22616c67223a2245643235353139222c22636f6d6d69746d656e745f6b65795f6964223a226263366238343836656563343361663336646330623865346637306237343366222c22636f6d6d69746d656e745f6d6f6465223a22686b6466222c22636f6e6669675f70726f76656e616e6365223a7b2267617465223a22766563746f72222c22736f75726365223a22746573742d6f6e6c79227d2c22656d69747465645f70726f66696c6573223a5b227361736b692d6e61746976654031225d2c22656e636f6465725f6964223a2232626465343731353839643363366331386436323565613536663264343336353638663837316465303133333462333035306635353031343637346164636536222c22676174657761795f636f64655f646967657374223a2266666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666222c22676174657761795f696e7374616e63655f6964223a22676174657761792d696e7374616e63652d766563746f72222c22686f6c645f6964223a22222c22686f705f696e646578223a312c2268756d616e5f6465636973696f6e223a6e756c6c2c226b6964223a22766563746f722d31222c226f726967696e5f6576656e745f6964223a22222c22706172616d65746572735f646967657374223a2238353431356261623933626531366631333162306539643662613835343335393636393436343162386663666638373733663265346637623138363063626165222c22706f6c6963795f76657273696f6e223a22766563746f722d706f6c6963792d31222c22707265765f726563656970745f6964223a22726563656970742d766563746f722d31222c2270726f64756374223a226167656e746963222c2270726f647563745f76657273696f6e223a22312e372e32222c22726561736f6e5f636f646573223a5b22564543544f525f414c4c4f57225d2c22726563656970745f6964223a22726563656970742d766563746f722d32222c22726563656970745f76657273696f6e223a22312e33222c227265636f72645f666c616773223a5b22636f6e74656d706f72616e656f7573225d2c227265636f72645f74797065223a226465636973696f6e222c227265736f75726365223a22222c2272756c65626f6f6b5f646967657374223a2263646364636463646364636463646364636463646364636463646364636463646364636463646364636463646364636463646364636463646364636463646364222c2273657373696f6e5f6964223a2273657373696f6e2d766563746f72222c2274696d655f77696e646f775f6964223a353839343738342c2274696d655f77696e646f775f7365636f6e6473223a3330302c2274696d657374616d70223a22323032362d30312d31355430303a30303a30302b30303a3030222c2274696d657374616d705f6e73223a313736383433353230303030303030303030302c22746f6f6c5f6e616d65223a226578616d706c655f5f6e6f6f70222c2276657264696374223a22616c6c6f77222c22776f726b666c6f775f6964223a2277662d766563746f72227d",
+      "canonical_utf8": "{\"agent_id\":\"agent-vector\",\"alg\":\"Ed25519\",\"commitment_key_id\":\"bc6b8486eec43af36dc0b8e4f70b743f\",\"commitment_mode\":\"hkdf\",\"config_provenance\":{\"gate\":\"vector\",\"source\":\"test-only\"},\"emitted_profiles\":[\"saski-native@1\"],\"encoder_id\":\"2bde471589d3c6c18d625ea56f2d436568f871de01334b3050f55014674adce6\",\"gateway_code_digest\":\"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff\",\"gateway_instance_id\":\"gateway-instance-vector\",\"hold_id\":\"\",\"hop_index\":1,\"human_decision\":null,\"kid\":\"vector-1\",\"origin_event_id\":\"\",\"parameters_digest\":\"85415bab93be16f131b0e9d6ba8543596694641b8fcff8773f2e4f7b1860cbae\",\"policy_version\":\"vector-policy-1\",\"prev_receipt_id\":\"receipt-vector-1\",\"product\":\"agentic\",\"product_version\":\"1.7.2\",\"reason_codes\":[\"VECTOR_ALLOW\"],\"receipt_id\":\"receipt-vector-2\",\"receipt_version\":\"1.3\",\"record_flags\":[\"contemporaneous\"],\"record_type\":\"decision\",\"resource\":\"\",\"rulebook_digest\":\"cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd\",\"session_id\":\"session-vector\",\"time_window_id\":5894784,\"time_window_seconds\":300,\"timestamp\":\"2026-01-15T00:00:00+00:00\",\"timestamp_ns\":1768435200000000000,\"tool_name\":\"example__noop\",\"verdict\":\"allow\",\"workflow_id\":\"wf-vector\"}",
+      "ed25519_public_key_b64": "uAKiced9sck1tT/LJ82Vw9ouImOqVNYHYn1+STp6MzM=",
+      "expected_result": "valid",
+      "receipt": {
+        "agent_id": "agent-vector",
+        "alg": "Ed25519",
+        "commitment_key_id": "bc6b8486eec43af36dc0b8e4f70b743f",
+        "commitment_mode": "hkdf",
+        "config_provenance": {
+          "gate": "vector",
+          "source": "test-only"
+        },
+        "emitted_profiles": [
+          "saski-native@1"
+        ],
+        "encoder_id": "2bde471589d3c6c18d625ea56f2d436568f871de01334b3050f55014674adce6",
+        "gateway_code_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "gateway_instance_id": "gateway-instance-vector",
+        "hold_id": "",
+        "hop_index": 1,
+        "human_decision": null,
+        "kid": "vector-1",
+        "origin_event_id": "",
+        "parameters_digest": "85415bab93be16f131b0e9d6ba8543596694641b8fcff8773f2e4f7b1860cbae",
+        "policy_version": "vector-policy-1",
+        "prev_receipt_id": "receipt-vector-1",
+        "product": "agentic",
+        "product_version": "1.7.2",
+        "reason_codes": [
+          "VECTOR_ALLOW"
+        ],
+        "receipt_id": "receipt-vector-2",
+        "receipt_version": "1.3",
+        "record_flags": [
+          "contemporaneous"
+        ],
+        "record_type": "decision",
+        "resource": "",
+        "rulebook_digest": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+        "session_id": "session-vector",
+        "signature": "5TaCg180eyg2VrCePuO1lF38rGtbf7uAIBOiyJHZ6MlG++PLDWmaFxloSVWEbHoDdAqH5Emj7Kb1C83T4kGVDg==",
+        "time_window_id": 5894784,
+        "time_window_seconds": 300,
+        "timestamp": "2026-01-15T00:00:00+00:00",
+        "timestamp_ns": 1768435200000000000,
+        "tool_name": "example__noop",
+        "verdict": "allow",
+        "workflow_id": "wf-vector"
+      },
+      "sha256": "5ce4f7735113a0b83eb1a18e393b811e63877083b14605fd0b52cf55c99e532a",
+      "signature": "5TaCg180eyg2VrCePuO1lF38rGtbf7uAIBOiyJHZ6MlG++PLDWmaFxloSVWEbHoDdAqH5Emj7Kb1C83T4kGVDg=="
+    }
+  ],
+  "test_only": {
+    "commitment_key_id": "bc6b8486eec43af36dc0b8e4f70b743f",
+    "commitment_master": "TEST ONLY sasi-sdk commitment master key",
+    "commitment_mode": "hkdf",
+    "ed25519_private_key_b64": "VEVTVCBPTkxZIEVEMjU1MTkgU0VFRCBWQUxVRSEhISE=",
+    "ed25519_public_key_b64": "uAKiced9sck1tT/LJ82Vw9ouImOqVNYHYn1+STp6MzM=",
+    "ed25519_seed_hex": "54455354204f4e4c59204544323535313920534545442056414c554521212121",
+    "ed25519_seed_utf8": "TEST ONLY ED25519 SEED VALUE!!!!",
+    "hmac_secret": "TEST ONLY sasi-sdk envelope hmac secret",
+    "kid": "vector-1",
+    "label": "TEST ONLY"
+  },
+  "vector": "agentic_chain_v1_3"
+}

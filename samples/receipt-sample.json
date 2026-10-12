@@ -1,0 +1,46 @@
+{
+  "agent_id": "agent-vector",
+  "alg": "Ed25519",
+  "commitment_key_id": "bc6b8486eec43af36dc0b8e4f70b743f",
+  "commitment_mode": "hkdf",
+  "config_provenance": {
+    "gate": "vector",
+    "source": "test-only"
+  },
+  "emitted_profiles": [
+    "saski-native@1"
+  ],
+  "encoder_id": "2bde471589d3c6c18d625ea56f2d436568f871de01334b3050f55014674adce6",
+  "gateway_code_digest": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "gateway_instance_id": "gateway-instance-vector",
+  "hold_id": "",
+  "hop_index": 0,
+  "human_decision": null,
+  "kid": "vector-1",
+  "origin_event_id": "",
+  "parameters_digest": "85415bab93be16f131b0e9d6ba8543596694641b8fcff8773f2e4f7b1860cbae",
+  "policy_version": "vector-policy-1",
+  "prev_receipt_id": "",
+  "product": "agentic",
+  "product_version": "1.7.2",
+  "reason_codes": [
+    "VECTOR_DENY"
+  ],
+  "receipt_id": "receipt-vector-1",
+  "receipt_version": "1.3",
+  "record_flags": [
+    "contemporaneous"
+  ],
+  "record_type": "decision",
+  "resource": "",
+  "rulebook_digest": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+  "session_id": "session-vector",
+  "signature": "pFOl1Fa11zVGQcZmfKjho73PmTb3PdNewF8XZf5dpTixe+Cwbue4BV1UHmXEKIHyA4jiIDx2qojMaOpj1bEvBA==",
+  "time_window_id": 5894784,
+  "time_window_seconds": 300,
+  "timestamp": "2026-01-15T00:00:00+00:00",
+  "timestamp_ns": 1768435200000000000,
+  "tool_name": "example__noop",
+  "verdict": "deny",
+  "workflow_id": "wf-vector"
+}
